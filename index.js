@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 
 // middleware
-// app.use('/static', express.static(path.join(__dirname, 'public')))
+app.use('/dist', express.static(path.join(__dirname, 'dist')));
 
 // default routes
 app.get('/', (_req, res, _next) => res.send('OK'));
