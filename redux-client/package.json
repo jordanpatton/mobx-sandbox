@@ -1,0 +1,15 @@
+{
+  "name": "react-state-management-redux-client",
+  "version": "1.0.0",
+  "description": "redux client for react-state-management",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jordanpatton/react-state-management.git"
+  },
+  "author": "jordanpatton@gmail.com",
+  "license": "ISC"
+}
