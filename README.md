@@ -1,2 +1,2 @@
-# mobx-sandbox
-MobX Sandbox
+# react-state-management
+React State Management Sandbox
