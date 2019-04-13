@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jordanpatton/mobx-sandbox/issues"
   },
-  "homepage": "https://github.com/jordanpatton/mobx-sandbox"
+  "homepage": "https://github.com/jordanpatton/mobx-sandbox",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }
