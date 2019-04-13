@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "mobx-sandbox-client",
   "version": "1.0.0",
   "description": "mobx-sandbox client",
   "main": "index.js",
