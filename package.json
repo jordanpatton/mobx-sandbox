@@ -1,7 +1,7 @@
 {
-  "name": "react-state-management-server",
+  "name": "react-state-management-sandbox",
   "version": "1.0.0",
-  "description": "server for react-state-management",
+  "description": "react-state-management-sandbox",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jordanpatton/react-state-management.git"
+    "url": "git+https://github.com/jordanpatton/react-state-management-sandbox.git"
   },
   "author": "jordanpatton@gmail.com",
   "license": "ISC",
