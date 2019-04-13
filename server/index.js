@@ -3,6 +3,7 @@ const express = require('express');
 const userFixtures = require('./fixtures/users.json');
 const widgetFixtures = require('./fixtures/widgets.json');
 
+const PORT = process.env.PORT || 3000;
 const app = express();
 
 app.get('/', (_req, res, _next) => res.send('OK'));
@@ -27,4 +28,4 @@ app.get('/api/widgets/:widgetId', (req, res, _next) =>
 // 404
 app.get('*', (_req, res, _next) => res.status(404).send('Not Found'));
 
-app.listen(3000, () => console.log('listening on port 3000...'));
+app.listen(PORT, () => console.log(`listening on port ${PORT}...`));
