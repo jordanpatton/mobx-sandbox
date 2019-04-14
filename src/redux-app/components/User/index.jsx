@@ -27,6 +27,7 @@ export class User extends React.Component {
             <div style={{ backgroundColor: '#FAFAD2' }}>
                 <img src={this.props.user.image_url} alt="avatar" title="avatar" />
                 {' '}{this.props.user.first_name} {this.props.user.last_name}
+                {' '}&lt;{this.props.user.email_address}&gt;
             </div>
         ) : (
             <div>Loading...</div>
