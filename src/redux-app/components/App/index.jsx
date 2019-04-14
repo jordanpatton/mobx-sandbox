@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
 import reducers from '../../reducers/index.js';
-import Page from '../Page/index.jsx';
+import Users from '../Users/index.jsx';
 
 export function createStoreHelper({ initialState = {} } = {}) {
     return createStore(
@@ -16,7 +16,7 @@ export function createStoreHelper({ initialState = {} } = {}) {
 
 export const App = () => (
     <Provider store={createStoreHelper()}>
-        <Page />
+        <Users />
     </Provider>
 );
 

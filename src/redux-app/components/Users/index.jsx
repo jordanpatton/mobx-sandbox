@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { indexUsers as _indexUsers } from '../../actions/index.js';
 
-export class Page extends React.Component {
+export class Users extends React.Component {
     componentDidMount() {
         if (!this.props.users) {
             this.props.indexUsers();                
@@ -41,7 +41,7 @@ export class Page extends React.Component {
     }
 }
 
-Page.propTypes = {
+Users.propTypes = {
     indexUsers: PropTypes.func.isRequired,
     users: PropTypes.arrayOf(PropTypes.object),
 };
@@ -54,4 +54,4 @@ const mapDispatchToProps = dispatch => ({
     indexUsers: () => dispatch(_indexUsers()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Page);
+export default connect(mapStateToProps, mapDispatchToProps)(Users);
