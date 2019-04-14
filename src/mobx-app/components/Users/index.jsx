@@ -3,6 +3,12 @@ import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 
 class Users extends React.Component {
+    componentDidMount() {
+        if (!this.props.usersStore.data.length) {
+            this.props.usersStore.indexUsers();
+        }
+    }
+
     renderTable() {
         return (
             <table>
@@ -16,7 +22,7 @@ class Users extends React.Component {
                     </tr>
                 </thead>
                 <tbody>
-                    {this.props.usersStore.getData().map(user => (
+                    {this.props.usersStore.data.map(user => (
                         <tr key={user.id} onClick={() => console.log('TODO')}>
                             <th>{user.id}</th>
                             <th>{user.first_name} {user.last_name}</th>
@@ -31,7 +37,7 @@ class Users extends React.Component {
     }
 
     render() {
-        return (this.props.usersStore && this.props.usersStore.getData().length) ? (
+        return this.props.usersStore.data.length ? (
             <div style={{ padding: '24px' }}>
                 <h2 style={{ fontSize: '36px' }}>All Users</h2>
                 {this.renderTable()}

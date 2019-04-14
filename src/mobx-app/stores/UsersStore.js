@@ -5,8 +5,15 @@ export class UsersStore {
         this.data = observable([]);
     }
 
-    getData() {
-        return this.data;
+    indexUsers(params) {
+        return (
+            (typeof window !== 'undefined' && typeof window.fetch !== 'undefined')
+            ? window
+                .fetch('http://localhost:3000/api/users', { method: 'GET', params })
+                .then(r => r.status === 200 ? r.json() : Promise.reject(r))
+                .then(rj => {this.data.replace(rj.users); return rj;})
+            : Promise.reject('window.fetch unavailable')
+        );
     }
 }
 
