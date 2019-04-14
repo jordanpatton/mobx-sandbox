@@ -31,7 +31,7 @@ export class Root extends React.Component {
     renderBody() {
         switch (this.state.selection) {
             case 'redux': return (<ReduxApp />); break;
-            default: return (<div>default</div>); break;
+            default: return (<div style={{ padding: '24px' }}>default</div>); break;
         }
     }
 
