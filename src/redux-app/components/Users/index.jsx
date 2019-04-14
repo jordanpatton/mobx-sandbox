@@ -40,11 +40,14 @@ export class Users extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         return this.props.users ? (
             <div>
-                {this.renderTable()}
-                <User key={this.props.uiSelectedUserId} />
+                <div style={{ display: 'inline-block' }}>
+                    {this.renderTable()}
+                </div>
+                <div style={{ display: 'inline-block' }}>
+                    <User />
+                </div>
             </div>
         ) : (
             <div>Loading...</div>
@@ -55,12 +58,10 @@ export class Users extends React.Component {
 Users.propTypes = {
     indexUsers: PropTypes.func.isRequired,
     uiSelectUserId: PropTypes.func.isRequired,
-    uiSelectedUserId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     users: PropTypes.arrayOf(PropTypes.object),
 };
 
 const mapStateToProps = state => ({
-    uiSelectedUserId: state.reducers.ui.selectedUserId,
     users: state.reducers.users.data ? state.reducers.users.data.users : undefined,
 });
 

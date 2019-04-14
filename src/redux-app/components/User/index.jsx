@@ -6,7 +6,16 @@ import * as actions from '../../actions/index.js';
 
 export class User extends React.Component {
     componentDidMount() {
-        if (!this.props.user && this.props.uiSelectedUserId) {
+        if (this.props.uiSelectedUserId) {
+            this.props.getUser(this.props.uiSelectedUserId);                
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        if (
+            (prevProps.uiSelectedUserId !== this.props.uiSelectedUserId)
+            && this.props.uiSelectedUserId
+        ) {
             this.props.getUser(this.props.uiSelectedUserId);                
         }
     }
@@ -15,7 +24,10 @@ export class User extends React.Component {
         return !this.props.uiSelectedUserId ? (
             <div>No user selected.</div>
         ) : this.props.user ? (
-            <code>{JSON.stringify(this.props.user)}</code>
+            <div>
+                <img src={this.props.user.image_url} alt="avatar" title="avatar" />
+                {' '}{this.props.user.first_name} {this.props.user.last_name}
+            </div>
         ) : (
             <div>Loading...</div>
         );
