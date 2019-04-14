@@ -11,6 +11,9 @@ export function fetchResource(resourceName = '', data) {
     );
 }
 
+// =======================================================================================
+// INDEX_USERS
+// =======================================================================================
 // actions
 export const INDEX_USERS_PENDING = 'INDEX_USERS_PENDING';
 export const INDEX_USERS_SUCCESS = 'INDEX_USERS_SUCCESS';
@@ -26,5 +29,26 @@ export function indexUsers() {
         return fetchResource('users')
             .then(responseJson => dispatch(indexUsersSuccess(responseJson)))
             .catch(() => dispatch(indexUsersFailure('FAILURE!')));
+    };
+}
+
+// =======================================================================================
+// INDEX_WIDGETS
+// =======================================================================================
+// actions
+export const INDEX_WIDGETS_PENDING = 'INDEX_WIDGETS_PENDING';
+export const INDEX_WIDGETS_SUCCESS = 'INDEX_WIDGETS_SUCCESS';
+export const INDEX_WIDGETS_FAILURE = 'INDEX_WIDGETS_FAILURE';
+// action generators
+export const indexWidgetsPending = () => ({ type: INDEX_WIDGETS_PENDING });
+export const indexWidgetsSuccess = data => ({ type: INDEX_WIDGETS_SUCCESS, data });
+export const indexWidgetsFailure = data => ({ type: INDEX_WIDGETS_FAILURE, data });
+// action coordinator (returns a function that accepts `dispatch` as a parameter)
+export function indexWidgets() {
+    return (dispatch) => {
+        dispatch(indexWidgetsPending());
+        return fetchResource('widgets')
+            .then(responseJson => dispatch(indexWidgetsSuccess(responseJson)))
+            .catch(() => dispatch(indexWidgetsFailure('FAILURE!')));
     };
 }
