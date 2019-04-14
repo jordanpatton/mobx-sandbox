@@ -6,7 +6,7 @@ import * as actions from '../../actions/index.js';
 
 export class User extends React.Component {
     componentDidMount() {
-        if (this.props.uiSelectedUserId) {
+        if (typeof this.props.uiSelectedUserId !== 'undefined') {
             this.props.getUser(this.props.uiSelectedUserId);
         }
     }
@@ -14,14 +14,14 @@ export class User extends React.Component {
     componentDidUpdate(prevProps) {
         if (
             (prevProps.uiSelectedUserId !== this.props.uiSelectedUserId)
-            && this.props.uiSelectedUserId
+            && typeof this.props.uiSelectedUserId !== 'undefined'
         ) {
             this.props.getUser(this.props.uiSelectedUserId);
         }
     }
 
     render() {
-        return !this.props.uiSelectedUserId ? (
+        return typeof this.props.uiSelectedUserId === 'undefined' ? (
             <div>No user selected.</div>
         ) : this.props.user ? (
             <div style={{ backgroundColor: '#FAFAD2' }}>
