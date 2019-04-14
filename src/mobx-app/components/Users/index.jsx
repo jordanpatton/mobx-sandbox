@@ -16,7 +16,7 @@ class Users extends React.Component {
                     </tr>
                 </thead>
                 <tbody>
-                    {this.props.users.map(user => (
+                    {this.props.usersStore.getData().map(user => (
                         <tr key={user.id} onClick={() => console.log('TODO')}>
                             <th>{user.id}</th>
                             <th>{user.first_name} {user.last_name}</th>
@@ -31,8 +31,7 @@ class Users extends React.Component {
     }
 
     render() {
-        console.log('Users.render', this.props);
-        return this.props.users ? (
+        return (this.props.usersStore && this.props.usersStore.getData().length) ? (
             <div style={{ padding: '24px' }}>
                 <h2 style={{ fontSize: '36px' }}>All Users</h2>
                 {this.renderTable()}
@@ -43,8 +42,8 @@ class Users extends React.Component {
     }
 }
 
-Users.propTypes = {
-    usersStore: PropTypes.object,
-};
+// Users.propTypes = {
+//     usersStore: PropTypes.object,
+// };
 
 export default inject('usersStore')(observer(Users));
