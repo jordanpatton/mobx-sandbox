@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import * as actions from '../../actions/index.js';
 import User from '../User/index.jsx';
+import WidgetsForUser from '../WidgetsForUser/index.jsx';
 
 export class Users extends React.Component {
     componentDidMount() {
@@ -46,6 +47,8 @@ export class Users extends React.Component {
                 {this.renderTable()}
                 <h2 style={{ marginTop: '24px', fontSize: '36px' }}>Selected User</h2>
                 <User />
+                <h2 style={{ marginTop: '24px', fontSize: '36px' }}>User&apos;s Widgets</h2>
+                <WidgetsForUser />
             </div>
         ) : (
             <div>Loading...</div>
