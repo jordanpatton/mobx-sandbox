@@ -1,18 +1,8 @@
 import React from 'react';
+import { observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
-import * as actions from '../../actions/index.js';
-import User from '../User/index.jsx';
-import WidgetsForUser from '../WidgetsForUser/index.jsx';
-
-export class Users extends React.Component {
-    componentDidMount() {
-        if (!this.props.users) {
-            this.props.indexUsers();
-        }
-    }
-
+class Users extends React.Component {
     renderTable() {
         return (
             <table>
@@ -27,7 +17,7 @@ export class Users extends React.Component {
                 </thead>
                 <tbody>
                     {this.props.users.map(user => (
-                        <tr key={user.id} onClick={() => this.props.uiSelectUserId(user.id)}>
+                        <tr key={user.id} onClick={() => console.log('TODO')}>
                             <th>{user.id}</th>
                             <th>{user.first_name} {user.last_name}</th>
                             <th>{user.email_address}</th>
@@ -41,14 +31,11 @@ export class Users extends React.Component {
     }
 
     render() {
+        console.log('Users.render', this.props);
         return this.props.users ? (
             <div style={{ padding: '24px' }}>
                 <h2 style={{ fontSize: '36px' }}>All Users</h2>
                 {this.renderTable()}
-                <h2 style={{ marginTop: '24px', fontSize: '36px' }}>Selected User</h2>
-                <User />
-                <h2 style={{ marginTop: '24px', fontSize: '36px' }}>User&apos;s Widgets</h2>
-                <WidgetsForUser />
             </div>
         ) : (
             <div style={{ padding: '24px' }}>Loading...</div>
@@ -57,18 +44,7 @@ export class Users extends React.Component {
 }
 
 Users.propTypes = {
-    indexUsers: PropTypes.func.isRequired,
-    uiSelectUserId: PropTypes.func.isRequired,
     users: PropTypes.arrayOf(PropTypes.object),
 };
 
-const mapStateToProps = state => ({
-    users: state.reducers.users.data ? state.reducers.users.data.users : undefined,
-});
-
-const mapDispatchToProps = dispatch => ({
-    indexUsers: () => dispatch(actions.indexUsers()),
-    uiSelectUserId: userId => dispatch(actions.uiSelectUserId(userId)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Users);
+export default observer(Users);
