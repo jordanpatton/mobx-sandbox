@@ -24,7 +24,7 @@ export class User extends React.Component {
         return !this.props.uiSelectedUserId ? (
             <div>No user selected.</div>
         ) : this.props.user ? (
-            <div>
+            <div style={{ backgroundColor: '#FAFAD2' }}>
                 <img src={this.props.user.image_url} alt="avatar" title="avatar" />
                 {' '}{this.props.user.first_name} {this.props.user.last_name}
             </div>

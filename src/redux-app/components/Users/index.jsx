@@ -41,13 +41,11 @@ export class Users extends React.Component {
 
     render() {
         return this.props.users ? (
-            <div>
-                <div style={{ display: 'inline-block' }}>
-                    {this.renderTable()}
-                </div>
-                <div style={{ display: 'inline-block' }}>
-                    <User />
-                </div>
+            <div style={{ padding: '24px' }}>
+                <h2 style={{ fontSize: '36px' }}>All Users</h2>
+                {this.renderTable()}
+                <h2 style={{ marginTop: '24px', fontSize: '36px' }}>Selected User</h2>
+                <User />
             </div>
         ) : (
             <div>Loading...</div>
