@@ -1,4 +1,4 @@
-import { autorun, observable } from 'mobx';
+import { action, autorun, observable } from 'mobx';
 
 export function fetchResource(resourceName = '', params) {
     return (
@@ -16,11 +16,14 @@ export class AppStore {
         this.user = observable({});
         this.users = observable([]);
 
-        autorun(() => {
-            if (typeof this.ui.selectedUserId !== 'undefined') {
-                this.getUser(this.ui.selectedUserId);
-            }
-        });
+        this.getUser = action(this.getUser);
+        this.indexUsers = action(this.indexUsers);
+
+        autorun(() => (
+            typeof this.ui.selectedUserId !== 'undefined'
+            ? this.getUser(this.ui.selectedUserId)
+            : Promise.resolve()
+        ));
     }
 
     getUser(userId) {
