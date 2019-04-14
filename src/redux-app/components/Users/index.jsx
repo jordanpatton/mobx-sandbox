@@ -8,7 +8,7 @@ import User from '../User/index.jsx';
 export class Users extends React.Component {
     componentDidMount() {
         if (!this.props.users) {
-            this.props.indexUsers();                
+            this.props.indexUsers();
         }
     }
 

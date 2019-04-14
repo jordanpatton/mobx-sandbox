@@ -7,7 +7,7 @@ import * as actions from '../../actions/index.js';
 export class User extends React.Component {
     componentDidMount() {
         if (this.props.uiSelectedUserId) {
-            this.props.getUser(this.props.uiSelectedUserId);                
+            this.props.getUser(this.props.uiSelectedUserId);
         }
     }
 
@@ -16,7 +16,7 @@ export class User extends React.Component {
             (prevProps.uiSelectedUserId !== this.props.uiSelectedUserId)
             && this.props.uiSelectedUserId
         ) {
-            this.props.getUser(this.props.uiSelectedUserId);                
+            this.props.getUser(this.props.uiSelectedUserId);
         }
     }
 
