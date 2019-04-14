@@ -22,7 +22,7 @@ class Users extends React.Component {
                 </thead>
                 <tbody>
                     {this.props.store.users.map(user => (
-                        <tr key={user.id} onClick={() => console.log('TODO')}>
+                        <tr key={user.id} onClick={() => this.props.store.uiSelectUserId(user.id)}>
                             <th>{user.id}</th>
                             <th>{user.first_name} {user.last_name}</th>
                             <th>{user.email_address}</th>
@@ -40,6 +40,7 @@ class Users extends React.Component {
             <div style={{ padding: '24px' }}>
                 <h2 style={{ fontSize: '36px' }}>All Users</h2>
                 {this.renderTable()}
+                <code>{JSON.stringify(this.props.store.uiSelectedUserId)}</code>
             </div>
         ) : (
             <div style={{ padding: '24px' }}>Loading...</div>

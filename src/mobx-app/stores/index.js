@@ -12,7 +12,16 @@ export function fetchResource(resourceName = '', params) {
 
 export class AppStore {
     constructor() {
+        this.uiSelectedUserId = observable.box(undefined);
+        this.user = observable.box(undefined);
         this.users = observable([]);
+    }
+
+    getUser(userId) {
+        return fetchResource(`users/${userId}`).then(responseJson => {
+            this.user.set(responseJson.user);
+            return responseJson;
+        });
     }
 
     indexUsers() {
@@ -20,6 +29,10 @@ export class AppStore {
             this.users.replace(responseJson.users);
             return responseJson;
         });
+    }
+
+    uiSelectUserId(userId) {
+        this.uiSelectedUserId.set(userId);
     }
 }
 
