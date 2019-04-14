@@ -1,6 +1,5 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
-import PropTypes from 'prop-types';
 
 class Users extends React.Component {
     componentDidMount() {
@@ -47,9 +46,5 @@ class Users extends React.Component {
         );
     }
 }
-
-// Users.propTypes = {
-//     usersStore: PropTypes.object,
-// };
 
 export default inject('usersStore')(observer(Users));
