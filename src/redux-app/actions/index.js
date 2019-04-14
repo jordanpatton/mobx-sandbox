@@ -33,6 +33,27 @@ export function indexUsers() {
 }
 
 // =======================================================================================
+// GET_USER
+// =======================================================================================
+// actions
+export const GET_USER_PENDING = 'GET_USER_PENDING';
+export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
+export const GET_USER_FAILURE = 'GET_USER_FAILURE';
+// action generators
+export const getUserPending = () => ({ type: GET_USER_PENDING });
+export const getUserSuccess = data => ({ type: GET_USER_SUCCESS, data });
+export const getUserFailure = data => ({ type: GET_USER_FAILURE, data });
+// action coordinator (returns a function that accepts `dispatch` as a parameter)
+export function getUser(userId) {
+    return (dispatch) => {
+        dispatch(getUserPending());
+        return fetchResource(`users/${userId}`)
+            .then(responseJson => dispatch(getUserSuccess(responseJson)))
+            .catch(() => dispatch(getUserFailure('FAILURE!')));
+    };
+}
+
+// =======================================================================================
 // INDEX_WIDGETS
 // =======================================================================================
 // actions

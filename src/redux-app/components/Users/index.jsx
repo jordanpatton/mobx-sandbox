@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { indexUsers as _indexUsers } from '../../actions/index.js';
+import * as actions from '../../actions/index.js';
 
 export class Users extends React.Component {
     componentDidMount() {
@@ -51,7 +51,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    indexUsers: () => dispatch(_indexUsers()),
+    indexUsers: () => dispatch(actions.indexUsers()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Users);
