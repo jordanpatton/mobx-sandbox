@@ -1,10 +1,13 @@
 import React from 'react';
+import { Provider } from 'mobx-react';
 
 import UsersStore from '../../stores/UsersStore.js';
 import Users from '../Users/index.jsx';
 
 export const App = () => (
-    <Users store={new UsersStore()} />
+    <Provider store={new UsersStore()}>
+        <Users />
+    </Provider>
 );
 
 export default App;
