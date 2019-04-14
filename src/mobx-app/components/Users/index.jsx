@@ -25,7 +25,15 @@ class Users extends React.Component {
                 </thead>
                 <tbody>
                     {this.props.store.users.data.map(user => (
-                        <tr key={user.id} onClick={() => this.props.store.uiSelectUserId(user.id)}>
+                        <tr
+                            key={user.id}
+                            onClick={() => this.props.store.uiSelectUserId(user.id)}
+                            style={
+                                user.id === this.props.store.ui.selectedUserId
+                                ? { backgroundColor: '#FAFAD2' }
+                                : {}
+                            }
+                        >
                             <th>{user.id}</th>
                             <th>{user.first_name} {user.last_name}</th>
                             <th>{user.email_address}</th>

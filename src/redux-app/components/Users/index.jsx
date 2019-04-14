@@ -27,7 +27,15 @@ export class Users extends React.Component {
                 </thead>
                 <tbody>
                     {this.props.users.map(user => (
-                        <tr key={user.id} onClick={() => this.props.uiSelectUserId(user.id)}>
+                        <tr
+                            key={user.id}
+                            onClick={() => this.props.uiSelectUserId(user.id)}
+                            style={
+                                user.id === this.props.uiSelectedUserId
+                                ? { backgroundColor: '#FAFAD2' }
+                                : {}
+                            }
+                        >
                             <th>{user.id}</th>
                             <th>{user.first_name} {user.last_name}</th>
                             <th>{user.email_address}</th>
@@ -59,10 +67,12 @@ export class Users extends React.Component {
 Users.propTypes = {
     indexUsers: PropTypes.func.isRequired,
     uiSelectUserId: PropTypes.func.isRequired,
+    uiSelectedUserId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     users: PropTypes.arrayOf(PropTypes.object),
 };
 
 const mapStateToProps = state => ({
+    uiSelectedUserId: state.reducers.ui.selectedUserId,
     users: state.reducers.users.data ? state.reducers.users.data.users : undefined,
 });
 
