@@ -1,4 +1,4 @@
-import { observable } from 'mobx';
+import { autorun, observable } from 'mobx';
 
 export function fetchResource(resourceName = '', params) {
     return (
@@ -12,9 +12,15 @@ export function fetchResource(resourceName = '', params) {
 
 export class AppStore {
     constructor() {
-        this.uiSelectedUserId = observable.box(undefined);
+        this.ui = observable({});
         this.user = observable.box(undefined);
         this.users = observable([]);
+
+        autorun(() => {
+            if (typeof this.ui.selectedUserId !== 'undefined') {
+                this.getUser(this.ui.selectedUserId);
+            }
+        });
     }
 
     getUser(userId) {
@@ -32,7 +38,7 @@ export class AppStore {
     }
 
     uiSelectUserId(userId) {
-        this.uiSelectedUserId.set(userId);
+        this.ui.selectedUserId = userId;
     }
 }
 

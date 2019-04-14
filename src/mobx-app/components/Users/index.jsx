@@ -40,7 +40,7 @@ class Users extends React.Component {
             <div style={{ padding: '24px' }}>
                 <h2 style={{ fontSize: '36px' }}>All Users</h2>
                 {this.renderTable()}
-                <code>{JSON.stringify(this.props.store.uiSelectedUserId)}</code>
+                <code>{JSON.stringify(this.props.store.ui.selectedUserId)}</code>
             </div>
         ) : (
             <div style={{ padding: '24px' }}>Loading...</div>
