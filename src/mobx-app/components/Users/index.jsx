@@ -3,7 +3,7 @@ import { inject, observer } from 'mobx-react';
 
 class Users extends React.Component {
     componentDidMount() {
-        if (!this.props.usersStore.data.length) {
+        if (!this.props.usersStore.users.length) {
             this.props.usersStore.indexUsers();
         }
     }
@@ -21,7 +21,7 @@ class Users extends React.Component {
                     </tr>
                 </thead>
                 <tbody>
-                    {this.props.usersStore.data.map(user => (
+                    {this.props.usersStore.users.map(user => (
                         <tr key={user.id} onClick={() => console.log('TODO')}>
                             <th>{user.id}</th>
                             <th>{user.first_name} {user.last_name}</th>
@@ -36,7 +36,7 @@ class Users extends React.Component {
     }
 
     render() {
-        return this.props.usersStore.data.length ? (
+        return this.props.usersStore.users.length ? (
             <div style={{ padding: '24px' }}>
                 <h2 style={{ fontSize: '36px' }}>All Users</h2>
                 {this.renderTable()}
