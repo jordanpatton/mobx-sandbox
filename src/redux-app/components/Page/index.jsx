@@ -13,7 +13,28 @@ export class Page extends React.Component {
 
     render() {
         return this.props.users ? (
-            <code>{JSON.stringify(this.props.users)}</code>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email Address</th>
+                        <th>Company Name</th>
+                        <th>Avatar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {this.props.users.map(user => (
+                        <tr key={user.id}>
+                            <th>{user.id}</th>
+                            <th>{user.first_name} {user.last_name}</th>
+                            <th>{user.email_address}</th>
+                            <th>{user.company_name}</th>
+                            <th><img src={user.image_url} alt="avatar" title="avatar" /></th>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         ) : (
             <div>Loading...</div>
         );
