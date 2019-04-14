@@ -12,17 +12,27 @@ export function fetchResource(resourceName = '', params) {
 
 export class AppStore {
     constructor() {
+        // set fields as observables
         this.ui = observable({});
         this.user = observable({ data: undefined, status: undefined });
         this.users = observable({ data: undefined, status: undefined });
+        this.widgets = observable({ data: undefined, status: undefined });
 
+        // set async functions as actions
         this.getUser = action(this.getUser);
         this.indexUsers = action(this.indexUsers);
+        this.indexWidgets = action(this.indexWidgets);
 
+        // initialize reactions to `ui.selectedUserId` changing
         autorun(() => (
             typeof this.ui.selectedUserId !== 'undefined'
             ? this.getUser(this.ui.selectedUserId)
-            : Promise.reject()
+            : Promise.resolve()
+        ));
+        autorun(() => (
+            typeof this.ui.selectedUserId !== 'undefined'
+            ? this.indexWidgets(this.ui.selectedUserId)
+            : Promise.resolve()
         ));
     }
 
@@ -48,6 +58,21 @@ export class AppStore {
         }, (result) => {
             this.users.data = undefined;
             this.users.status = 'FAILURE';
+            return Promise.reject(result);
+        });
+    }
+
+    indexWidgets(userId) {
+        this.widgets.status = 'PENDING';
+        return fetchResource(
+            typeof userId !== 'undefined' ? `widgets?userId=${userId}` : 'widgets'
+        ).then(result => {
+            this.widgets.data = result.widgets;
+            this.widgets.status = 'SUCCESS';
+            return Promise.resolve(result);
+        }, (result) => {
+            this.widgets.data = undefined;
+            this.widgets.status = 'FAILURE';
             return Promise.reject(result);
         });
     }

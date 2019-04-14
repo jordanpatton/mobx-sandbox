@@ -2,6 +2,7 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 
 import User from '../User/index.jsx';
+import WidgetsForUser from '../WidgetsForUser/index.jsx';
 
 class Users extends React.Component {
     componentDidMount() {
@@ -45,6 +46,8 @@ class Users extends React.Component {
                 {this.renderTable()}
                 <h2 style={{ marginTop: '24px', fontSize: '36px' }}>Selected User</h2>
                 <User />
+                <h2 style={{ marginTop: '24px', fontSize: '36px' }}>User&apos;s Widgets</h2>
+                <WidgetsForUser />
             </div>
         ) : status === 'FAILURE' ? (
             <div style={{ padding: '24px' }}>Failed to fetch users.</div>

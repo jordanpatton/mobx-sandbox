@@ -75,7 +75,9 @@ export const indexWidgetsFailure = data => ({ type: INDEX_WIDGETS_FAILURE, data 
 export function indexWidgets(userId) {
     return (dispatch) => {
         dispatch(indexWidgetsPending());
-        return fetchResource(userId ? `widgets?userId=${userId}` : 'widgets')
+        return fetchResource(
+            typeof userId !== 'undefined' ? `widgets?userId=${userId}` : 'widgets'
+        )
             .then(responseJson => dispatch(indexWidgetsSuccess(responseJson)))
             .catch(() => dispatch(indexWidgetsFailure('FAILURE!')));
     };
