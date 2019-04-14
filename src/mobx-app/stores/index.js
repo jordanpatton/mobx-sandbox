@@ -10,7 +10,7 @@ export function fetchResource(resourceName = '', params) {
     );
 }
 
-export class UsersStore {
+export class AppStore {
     constructor() {
         this.users = observable([]);
     }
@@ -23,4 +23,4 @@ export class UsersStore {
     }
 }
 
-export default UsersStore;
+export default AppStore;
