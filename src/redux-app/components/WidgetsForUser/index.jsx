@@ -24,9 +24,14 @@ export class WidgetsForUser extends React.Component {
         return !this.props.uiSelectedUserId ? (
             <div>No user selected.</div>
         ) : this.props.widgets ? (
-            <div style={{ backgroundColor: '#FFDEAD' }}>
-                <code>{JSON.stringify(this.props.widgets)}</code>
-            </div>
+            <ul style={{ backgroundColor: '#FFDEAD' }}>
+                {this.props.widgets.map(widget => (
+                    <li key={widget.id}>
+                        <img src={widget.image_url} alt="image" title="image" />
+                        {' '}{widget.name} ({widget.description})
+                    </li>
+                ))}
+            </ul>
         ) : (
             <div>Loading...</div>
         );
