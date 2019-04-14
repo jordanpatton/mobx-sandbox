@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import { App as MobXApp } from './mobx-app/components/App/index.jsx';
 import { App as ReduxApp } from './redux-app/components/App/index.jsx';
 
 export class Root extends React.Component {
@@ -24,6 +25,12 @@ export class Root extends React.Component {
                 >
                     redux
                 </button>
+                <button
+                    onClick={() => this.setState({ selection: 'mobx' })}
+                    type="button"
+                >
+                    mobx
+                </button>
             </div>
         );
     }
@@ -31,6 +38,7 @@ export class Root extends React.Component {
     renderBody() {
         switch (this.state.selection) {
             case 'redux': return (<ReduxApp />); break;
+            case 'mobx': return (<MobXApp />); break;
             default: return (<div style={{ padding: '24px' }}>default</div>); break;
         }
     }
