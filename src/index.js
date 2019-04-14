@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import { App as ReduxApp } from './redux-app/components/App/index.jsx';
+
 export class Root extends React.Component {
     constructor(...args) {
         super(...args);
@@ -28,7 +30,7 @@ export class Root extends React.Component {
 
     renderBody() {
         switch (this.state.selection) {
-            case 'redux': return (<div>redux</div>); break;
+            case 'redux': return (<ReduxApp />); break;
             default: return (<div>default</div>); break;
         }
     }
