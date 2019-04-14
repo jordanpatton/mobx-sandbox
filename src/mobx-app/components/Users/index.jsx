@@ -1,6 +1,8 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 
+import User from '../User/index.jsx';
+
 class Users extends React.Component {
     componentDidMount() {
         if (!this.props.store.users.length) {
@@ -40,7 +42,8 @@ class Users extends React.Component {
             <div style={{ padding: '24px' }}>
                 <h2 style={{ fontSize: '36px' }}>All Users</h2>
                 {this.renderTable()}
-                <code>{JSON.stringify(this.props.store.ui.selectedUserId)}</code>
+                <h2 style={{ marginTop: '24px', fontSize: '36px' }}>Selected User</h2>
+                <User />
             </div>
         ) : (
             <div style={{ padding: '24px' }}>Loading...</div>

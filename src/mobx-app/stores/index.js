@@ -13,7 +13,7 @@ export function fetchResource(resourceName = '', params) {
 export class AppStore {
     constructor() {
         this.ui = observable({});
-        this.user = observable.box(undefined);
+        this.user = observable({});
         this.users = observable([]);
 
         autorun(() => {
@@ -25,7 +25,7 @@ export class AppStore {
 
     getUser(userId) {
         return fetchResource(`users/${userId}`).then(responseJson => {
-            this.user.set(responseJson.user);
+            this.user = responseJson.user;
             return responseJson;
         });
     }
