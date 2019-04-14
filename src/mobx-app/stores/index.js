@@ -13,7 +13,7 @@ export function fetchResource(resourceName = '', params) {
 export class AppStore {
     constructor() {
         this.ui = observable({});
-        this.user = observable({});
+        this.user = observable({ data: undefined, status: undefined });
         this.users = observable([]);
 
         this.getUser = action(this.getUser);
@@ -22,14 +22,20 @@ export class AppStore {
         autorun(() => (
             typeof this.ui.selectedUserId !== 'undefined'
             ? this.getUser(this.ui.selectedUserId)
-            : Promise.resolve()
+            : Promise.reject()
         ));
     }
 
     getUser(userId) {
-        return fetchResource(`users/${userId}`).then(responseJson => {
-            this.user = responseJson.user;
-            return responseJson;
+        this.user.status = 'PENDING';
+        return fetchResource(`users/${userId}`).then(result => {
+            this.user.data = result.user;
+            this.user.status = 'SUCCESS';
+            return Promise.resolve(result);
+        }, (result) => {
+            this.user.data = undefined;
+            this.user.status = 'FAILURE';
+            return Promise.reject(result);
         });
     }
 
