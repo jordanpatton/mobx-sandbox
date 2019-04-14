@@ -6,14 +6,16 @@ import * as actions from '../../actions/index.js';
 
 export class User extends React.Component {
     componentDidMount() {
-        if (!this.props.user) {
-            this.props.getUser();                
+        if (!this.props.user && this.props.uiSelectedUserId) {
+            this.props.getUser(this.props.uiSelectedUserId);                
         }
     }
 
     render() {
-        return this.props.user ? (
-            <code>{this.props.user}</code>
+        return !this.props.uiSelectedUserId ? (
+            <div>No user selected.</div>
+        ) : this.props.user ? (
+            <code>{JSON.stringify(this.props.user)}</code>
         ) : (
             <div>Loading...</div>
         );
@@ -22,10 +24,12 @@ export class User extends React.Component {
 
 User.propTypes = {
     getUser: PropTypes.func.isRequired,
+    uiSelectedUserId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     user: PropTypes.object,
 };
 
 const mapStateToProps = state => ({
+    uiSelectedUserId: state.reducers.ui.selectedUserId,
     user: state.reducers.user.data ? state.reducers.user.data.user : undefined,
 });
 

@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
 
 import {
+    UI_SELECT_USER_ID,
+    UI_CLEAR_USER_ID,
     INDEX_USERS_PENDING,
     INDEX_USERS_SUCCESS,
     INDEX_USERS_FAILURE,
@@ -11,6 +13,17 @@ import {
     INDEX_WIDGETS_SUCCESS,
     INDEX_WIDGETS_FAILURE,
 } from '../actions/index.js';
+
+function ui(state = {}, action) {
+    switch (action.type) {
+        case UI_SELECT_USER_ID:
+            return { ...state, selectedUserId: action.data };
+        case UI_CLEAR_USER_ID:
+            return { ...state, selectedUserId: undefined };
+        default:
+            return state;
+    }
+}
 
 function users(state = {}, action) {
     switch (action.type) {
@@ -52,6 +65,7 @@ function widgets(state = {}, action) {
 }
 
 export default combineReducers({
+    ui,
     users,
     user,
     widgets,

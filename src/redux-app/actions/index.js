@@ -12,6 +12,16 @@ export function fetchResource(resourceName = '', data) {
 }
 
 // =======================================================================================
+// UI
+// =======================================================================================
+// actions
+export const UI_SELECT_USER_ID = 'UI_SELECT_USER_ID';
+export const UI_CLEAR_USER_ID = 'UI_CLEAR_USER_ID';
+// action generators
+export const uiSelectUserId = data => ({ type: UI_SELECT_USER_ID, data });
+export const uiClearUserId = () => ({ type: UI_CLEAR_USER_ID });
+
+// =======================================================================================
 // INDEX_USERS
 // =======================================================================================
 // actions
