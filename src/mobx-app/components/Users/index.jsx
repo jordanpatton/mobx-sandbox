@@ -5,7 +5,7 @@ import User from '../User/index.jsx';
 
 class Users extends React.Component {
     componentDidMount() {
-        if (!this.props.store.users.length) {
+        if (!this.props.store.users.status) {
             this.props.store.indexUsers();
         }
     }
@@ -23,7 +23,7 @@ class Users extends React.Component {
                     </tr>
                 </thead>
                 <tbody>
-                    {this.props.store.users.map(user => (
+                    {this.props.store.users.data.map(user => (
                         <tr key={user.id} onClick={() => this.props.store.uiSelectUserId(user.id)}>
                             <th>{user.id}</th>
                             <th>{user.first_name} {user.last_name}</th>
@@ -38,15 +38,20 @@ class Users extends React.Component {
     }
 
     render() {
-        return this.props.store.users.length ? (
+        const { status } = this.props.store.users;
+        return status === 'SUCCESS' ? (
             <div style={{ padding: '24px' }}>
                 <h2 style={{ fontSize: '36px' }}>All Users</h2>
                 {this.renderTable()}
                 <h2 style={{ marginTop: '24px', fontSize: '36px' }}>Selected User</h2>
                 <User />
             </div>
-        ) : (
+        ) : status === 'FAILURE' ? (
+            <div style={{ padding: '24px' }}>Failed to fetch users.</div>
+        ) : status === 'PENDING' ? (
             <div style={{ padding: '24px' }}>Loading...</div>
+        ) : (
+            <div style={{ padding: '24px' }}>{status}</div>
         );
     }
 }

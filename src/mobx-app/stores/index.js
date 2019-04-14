@@ -14,7 +14,7 @@ export class AppStore {
     constructor() {
         this.ui = observable({});
         this.user = observable({ data: undefined, status: undefined });
-        this.users = observable([]);
+        this.users = observable({ data: undefined, status: undefined });
 
         this.getUser = action(this.getUser);
         this.indexUsers = action(this.indexUsers);
@@ -40,9 +40,15 @@ export class AppStore {
     }
 
     indexUsers() {
-        return fetchResource('users').then(responseJson => {
-            this.users.replace(responseJson.users);
-            return responseJson;
+        this.users.status = 'PENDING';
+        return fetchResource('users').then(result => {
+            this.users.data = result.users;
+            this.users.status = 'SUCCESS';
+            return Promise.resolve(result);
+        }, (result) => {
+            this.users.data = undefined;
+            this.users.status = 'FAILURE';
+            return Promise.reject(result);
         });
     }
 
