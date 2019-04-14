@@ -1,5 +1,5 @@
 import React from 'react';
-import { observer } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 
 class Users extends React.Component {
@@ -44,7 +44,7 @@ class Users extends React.Component {
 }
 
 Users.propTypes = {
-    users: PropTypes.arrayOf(PropTypes.object),
+    usersStore: PropTypes.object,
 };
 
-export default observer(Users);
+export default inject('usersStore')(observer(Users));

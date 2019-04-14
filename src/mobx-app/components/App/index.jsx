@@ -5,7 +5,7 @@ import UsersStore from '../../stores/UsersStore.js';
 import Users from '../Users/index.jsx';
 
 export const App = () => (
-    <Provider store={new UsersStore()}>
+    <Provider usersStore={new UsersStore()}>
         <Users />
     </Provider>
 );
