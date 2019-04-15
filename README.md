@@ -22,3 +22,4 @@ React State Management Sandbox
   - Apollo Client
     - https://www.apollographql.com/docs/react/
     - https://reactjs.org/docs/render-props.html
+    - https://reactjs.org/docs/context.html
