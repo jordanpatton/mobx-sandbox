@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import { App as GraphQLApp } from './graphql-app/components/App/index.jsx';
 import { App as MobXApp } from './mobx-app/components/App/index.jsx';
 import { App as ReduxApp } from './redux-app/components/App/index.jsx';
 
@@ -31,6 +32,12 @@ export class Root extends React.Component {
                 >
                     mobx
                 </button>
+                <button
+                    onClick={() => this.setState({ selection: 'graphql' })}
+                    type="button"
+                >
+                    graphql
+                </button>
             </div>
         );
     }
@@ -39,6 +46,7 @@ export class Root extends React.Component {
         switch (this.state.selection) {
             case 'redux': return (<ReduxApp />); break;
             case 'mobx': return (<MobXApp />); break;
+            case 'graphql': return (<GraphQLApp />); break;
             default: return (<div style={{ padding: '24px' }}>default</div>); break;
         }
     }
