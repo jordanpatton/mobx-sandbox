@@ -24,7 +24,7 @@ class Users extends React.Component {
                                     key={user.id}
                                     onClick={() => {
                                         client.writeData({ data: { uiSelectedUserId: user.id } });
-                                        console.log(data, client.cache.data.data.ROOT_QUERY);
+                                        // console.log(data, client.cache.data.data.ROOT_QUERY);
                                     }}
                                     style={
                                         user.id === data.uiSelectedUserId
