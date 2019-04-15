@@ -30,18 +30,22 @@ type Widget {
 type Query {
     users: [User]
     user(id: ID): User
-    widgets: [Widget]
+    widgets(owner_id: ID): [Widget]
     widget(id: ID): Widget
 }
 `;
 
 const resolvers = {
     Query: {
-        users: () => userFixtures,
+        users: (_parent, _args, _context, _info) => userFixtures,
         user: (_parent, args, _context, _info) => (
             userFixtures.find(val => String(val.id) === String(args.id))
         ),
-        widgets: () => widgetFixtures,
+        widgets: (_parent, args, _context, _info) => (
+            typeof args.owner_id !== 'undefined'
+            ? widgetFixtures.filter(val => String(val.owner_id) === String(args.owner_id))
+            : widgetFixtures
+        ),
         widget: (_parent, args, _context, _info) => (
             widgetFixtures.find(val => String(val.id) === String(args.id))
         ),
