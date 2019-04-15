@@ -10,3 +10,4 @@ React State Management Sandbox
 - https://github.com/mobxjs/mobx-react
 - https://mobx.js.org/best/actions.html
 - https://github.com/apollographql/apollo-server-tutorial/tree/master/data
+- https://github.com/iamshaunjp/graphql-playlist/blob/lesson-36/server/schema/schema.js
