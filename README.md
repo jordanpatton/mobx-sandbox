@@ -1,5 +1,4 @@
-# react-state-management-sandbox
-React State Management Sandbox
+# React State Management Sandbox
 
 ## Overview
 This is a simple sandbox to compare different state management strategies for building a
