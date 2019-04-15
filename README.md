@@ -1,6 +1,14 @@
 # react-state-management-sandbox
 React State Management Sandbox
 
+## Overview
+This is a simple sandbox to compare different state management strategies for building a
+React web application. The server exposes two strategies: RESTful JSON API and GraphQL via
+Apollo Server. The client implements three strategies: Redux, MobX, and GraphQL via Apollo
+Client. To start the server first `npm install`, then `npm run webpack:production`, and
+then `node index.js`. To view the client applications visit
+[http://localhost:3000/dist](http://localhost:3000/dist).
+
 ## Useful Links
 - General
   - https://www.valentinog.com/blog/react-webpack-babel/
