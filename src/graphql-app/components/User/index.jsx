@@ -8,6 +8,7 @@ export function User() {
         <Query
             fetchPolicy="cache-and-network"
             query={GQL_GET_USER}
+            variables={{ id: 1 }}
         >
             {({ loading, error, data }) => (
                 loading ? (

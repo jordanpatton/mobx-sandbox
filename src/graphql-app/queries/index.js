@@ -7,8 +7,8 @@ export const GQL_GET_UI_SELECTED_USER_ID = gql`
 `;
 
 export const GQL_GET_USER = gql`
-{
-    user(id: 1) {
+query getUser($id: ID!) {
+    user(id: $id) {
         id
         first_name
         last_name
