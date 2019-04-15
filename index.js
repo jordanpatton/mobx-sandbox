@@ -37,14 +37,14 @@ type Query {
 
 const resolvers = {
     Query: {
-        users: (_parent, _args, _context, _info) => userFixtures,
+        users: (_parent, _args, _context, _info) => userFixtures.slice(0, 19),
         user: (_parent, args, _context, _info) => (
             userFixtures.find(val => String(val.id) === String(args.id))
         ),
         widgets: (_parent, args, _context, _info) => (
             typeof args.owner_id !== 'undefined'
             ? widgetFixtures.filter(val => String(val.owner_id) === String(args.owner_id))
-            : widgetFixtures
+            : widgetFixtures.slice(0, 19)
         ),
         widget: (_parent, args, _context, _info) => (
             widgetFixtures.find(val => String(val.id) === String(args.id))
