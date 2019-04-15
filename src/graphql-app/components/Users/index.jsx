@@ -16,7 +16,7 @@ const GQL_INDEX_USERS = gql`
 `;
 
 class Users extends React.Component {
-    static renderTable(users) {
+    static renderTable(users = []) {
         return (
             <table>
                 <thead>
@@ -48,7 +48,7 @@ class Users extends React.Component {
 
     render() {
         return (
-            <Query query={GQL_INDEX_USERS}>
+            <Query fetchPolicy="cache-and-network" query={GQL_INDEX_USERS}>
                 {({ loading, error, data }) => (
                     loading ? (
                         <div style={{ padding: '24px' }}>Loading...</div>

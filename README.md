@@ -24,3 +24,4 @@ React State Management Sandbox
     - https://reactjs.org/docs/render-props.html
     - https://reactjs.org/docs/context.html
       - https://github.com/facebook/react/issues/13969 (put context in a separate file)
+    - https://www.apollographql.com/docs/react/api/react-apollo#graphql-config-options-fetchPolicy
