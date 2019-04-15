@@ -1,4 +1,5 @@
 const path = require('path');
+const { ApolloServer, gql } = require('apollo-server-express');
 const express = require('express');
 
 const userFixtures = require('./fixtures/users.json');
@@ -7,6 +8,44 @@ const widgetFixtures = require('./fixtures/widgets.json');
 const PORT = process.env.PORT || 3000;
 const app = express();
 
+// =======================================================================================
+// graphql
+// =======================================================================================
+const typeDefs = gql`
+type User {
+    id: ID
+    first_name: String
+    last_name: String
+    email_address: String
+    company_name: String
+    image_url: String
+}
+type Widget {
+    id: ID
+    owner_id: ID
+    name: String
+    description: String
+    image_url: String
+}
+type Query {
+    users: [User]
+    widgets: [Widget]
+}
+`;
+
+const resolvers = {
+    Query: {
+        users: () => userFixtures,
+        widgets: () => widgetFixtures
+    }
+};
+
+const apolloServer = new ApolloServer({ typeDefs, resolvers });
+apolloServer.applyMiddleware({ app });
+
+// =======================================================================================
+// express
+// =======================================================================================
 // middleware
 app.use('/dist', express.static(path.join(__dirname, 'dist')));
 
@@ -37,4 +76,7 @@ app.get('/api/widgets/:widgetId', (req, res, _next) =>
 // 404
 app.get('*', (_req, res, _next) => res.status(404).send('Not Found'));
 
-app.listen(PORT, () => console.log(`listening on port ${PORT}...`));
+app.listen(PORT, () => {
+    console.log(`express listening on port ${PORT}...`);
+    console.log(`graphql available at ${apolloServer.graphqlPath}...`);
+});
