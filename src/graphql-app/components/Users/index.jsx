@@ -2,6 +2,7 @@ import React from 'react';
 import { Query } from 'react-apollo';
 
 import { GQL_GET_UI_SELECTED_USER_ID, GQL_INDEX_USERS } from '../../queries/index.js';
+import User from '../User/index.jsx';
 
 class Users extends React.Component {
     static renderTable(users = []) {
@@ -58,6 +59,8 @@ class Users extends React.Component {
                         <div style={{ padding: '24px' }}>
                             <h2 style={{ fontSize: '36px' }}>All Users</h2>
                             {Users.renderTable(data.users)}
+                            <h2 style={{ marginTop: '24px', fontSize: '36px' }}>Selected User</h2>
+                            <User />
                         </div>
                     )
                 )}
