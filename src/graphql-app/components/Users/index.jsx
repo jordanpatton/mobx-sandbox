@@ -1,19 +1,7 @@
 import React from 'react';
-import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
-const GQL_INDEX_USERS = gql`
-{
-    users {
-        id
-        first_name
-        last_name
-        email_address
-        company_name
-        image_url
-    }
-}
-`;
+import { GQL_INDEX_USERS } from '../../queries/index.js';
 
 class Users extends React.Component {
     static renderTable(users = []) {
