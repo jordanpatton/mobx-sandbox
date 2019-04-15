@@ -31,3 +31,15 @@ query indexUsers {
     }
 }
 `;
+
+export const GQL_INDEX_WIDGETS = gql`
+query indexWidgets($owner_id: ID) {
+    widgets(owner_id: $owner_id) {
+        id
+        owner_id
+        name
+        description
+        image_url
+    }
+}
+`;
