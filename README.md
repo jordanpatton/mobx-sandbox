@@ -23,3 +23,4 @@ React State Management Sandbox
     - https://www.apollographql.com/docs/react/
     - https://reactjs.org/docs/render-props.html
     - https://reactjs.org/docs/context.html
+      - https://github.com/facebook/react/issues/13969 (put context in a separate file)
