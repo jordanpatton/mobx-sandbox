@@ -29,14 +29,22 @@ type Widget {
 }
 type Query {
     users: [User]
+    user(id: ID): User
     widgets: [Widget]
+    widget(id: ID): Widget
 }
 `;
 
 const resolvers = {
     Query: {
         users: () => userFixtures,
-        widgets: () => widgetFixtures
+        user: (_parent, args, _context, _info) => (
+            userFixtures.find(val => String(val.id) === String(args.id))
+        ),
+        widgets: () => widgetFixtures,
+        widget: (_parent, args, _context, _info) => (
+            widgetFixtures.find(val => String(val.id) === String(args.id))
+        ),
     }
 };
 
