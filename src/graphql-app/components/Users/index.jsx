@@ -48,7 +48,7 @@ class Users extends React.Component {
 
     render() {
         return (
-            <Query query={GQL_INDEX_USERS}>
+            <Query pollInterval={1000} query={GQL_INDEX_USERS}>
                 {({ loading, error, data }) => (
                     loading ? (
                         <div style={{ padding: '24px' }}>Loading...</div>
