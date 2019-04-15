@@ -25,3 +25,4 @@ React State Management Sandbox
     - https://reactjs.org/docs/context.html
       - https://github.com/facebook/react/issues/13969 (put context in a separate file)
     - https://www.apollographql.com/docs/react/api/react-apollo#graphql-config-options-fetchPolicy
+    - https://spectrum.chat/apollo/general/cant-get-simple-client-only-route-data-sample-working~23502776-f025-46a4-a311-27c45bb7402a
