@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 export const GQL_GET_UI_SELECTED_USER_ID = gql`
-{
+query getUiSelectedUserId {
     uiSelectedUserId @client
 }
 `;
@@ -20,7 +20,7 @@ query getUser($id: ID!) {
 `;
 
 export const GQL_INDEX_USERS = gql`
-{
+query indexUsers {
     users {
         id
         first_name
