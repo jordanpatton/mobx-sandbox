@@ -15,7 +15,9 @@
   "author": "jordanpatton@gmail.com",
   "license": "ISC",
   "dependencies": {
+    "apollo-server-express": "^2.4.8",
     "express": "^4.16.4",
+    "graphql": "^14.2.1",
     "mobx": "^5.9.4",
     "mobx-react": "^5.4.3",
     "prop-types": "^15.7.2",
