@@ -1,39 +1,48 @@
 import React from 'react';
-import { ApolloConsumer, Query } from 'react-apollo';
+import { Query } from 'react-apollo';
 
-import { GQL_INDEX_USERS } from '../../queries/index.js';
+import { GQL_GET_UI_SELECTED_USER_ID, GQL_INDEX_USERS } from '../../queries/index.js';
 
 class Users extends React.Component {
-    static renderTable(apolloClient, users = []) {
+    static renderTable(users = []) {
         return (
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email Address</th>
-                        <th>Company Name</th>
-                        <th>Avatar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {users.map(user => (
-                        <tr
-                            key={user.id}
-                            onClick={() => {
-                                apolloClient.writeData({ data: { uiSelectedUserId: user.id } });
-                                console.log(apolloClient);
-                            }}
-                        >
-                            <th>{user.id}</th>
-                            <th>{user.first_name} {user.last_name}</th>
-                            <th>{user.email_address}</th>
-                            <th>{user.company_name}</th>
-                            <th><img src={user.image_url} alt="avatar" title="avatar" /></th>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+            <Query query={GQL_GET_UI_SELECTED_USER_ID}>
+                {({ data = {}, client }) => (
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email Address</th>
+                                <th>Company Name</th>
+                                <th>Avatar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {users.map(user => (
+                                <tr
+                                    key={user.id}
+                                    onClick={() => {
+                                        client.writeData({ data: { uiSelectedUserId: user.id } });
+                                        console.log(data, client.cache.data.data.ROOT_QUERY);
+                                    }}
+                                    style={
+                                        user.id === data.uiSelectedUserId
+                                        ? { backgroundColor: '#FAFAD2' }
+                                        : {}
+                                    }
+                                >
+                                    <th>{user.id}</th>
+                                    <th>{user.first_name} {user.last_name}</th>
+                                    <th>{user.email_address}</th>
+                                    <th>{user.company_name}</th>
+                                    <th><img src={user.image_url} alt="avatar" title="avatar" /></th>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                )}
+            </Query>
         );
     }
 
@@ -48,9 +57,7 @@ class Users extends React.Component {
                     ) : (
                         <div style={{ padding: '24px' }}>
                             <h2 style={{ fontSize: '36px' }}>All Users</h2>
-                            <ApolloConsumer>
-                                {apolloClient => Users.renderTable(apolloClient, data.users)}
-                            </ApolloConsumer>
+                            {Users.renderTable(data.users)}
                         </div>
                     )
                 )}
