@@ -1,30 +1,36 @@
 import React from 'react';
 import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
 
-import { AppContext } from '../App/context.js';
+const GQL_INDEX_USERS = gql`
+{
+    users {
+        id
+        first_name
+        last_name
+    }
+}
+`;
 
 class Users extends React.Component {
     render() {
-        console.log(this.context);
-        this.context.apolloClient.query({
-            query: gql`
-            {
-                users {
-                    id
-                    first_name
-                    last_name
-                }
-            }
-            `
-        }).then(result => console.log(result));
         return (
-            <div style={{ padding: '24px' }}>
-                Users
-            </div>
+            <Query query={GQL_INDEX_USERS}>
+                {({ loading, error, data }) => {
+                    return loading ? (
+                        <div style={{ padding: '24px' }}>Loading...</div>
+                    ) : error ? (
+                        <div style={{ padding: '24px' }}>Failed to fetch users.</div>
+                    ) : (
+                        <div style={{ padding: '24px' }}>
+                            <h2 style={{ fontSize: '36px' }}>All Users</h2>
+                            <code>{JSON.stringify(data)}</code>
+                        </div>
+                    );
+                }}
+            </Query>
         );
     }
 }
-
-Users.contextType = AppContext;
 
 export default Users;

@@ -1,12 +1,15 @@
 import React from 'react';
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
 
 import Users from '../Users/index.jsx';
-import { apolloClient, AppContext } from './context.js';
+
+export const apolloClient = new ApolloClient({ uri: 'http://localhost:3000/graphql' });
 
 export const App = () => (
-    <AppContext.Provider value={{ apolloClient }}>
+    <ApolloProvider client={apolloClient}>
         <Users />
-    </AppContext.Provider>
+    </ApolloProvider>
 );
 
 export default App;
