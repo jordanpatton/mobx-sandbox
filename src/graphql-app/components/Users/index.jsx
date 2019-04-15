@@ -7,26 +7,23 @@ import User from '../User/index.jsx';
 class Users extends React.Component {
     static renderTable(users = []) {
         return (
-            <Query query={GQL_GET_UI_SELECTED_USER_ID}>
-                {({ data = {}, client }) => (
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Email Address</th>
-                                <th>Company Name</th>
-                                <th>Avatar</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {users.map(user => (
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email Address</th>
+                        <th>Company Name</th>
+                        <th>Avatar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <Query query={GQL_GET_UI_SELECTED_USER_ID}>
+                        {({ data = {}, client }) => (
+                            users.map(user => (
                                 <tr
                                     key={user.id}
-                                    onClick={() => {
-                                        client.writeData({ data: { uiSelectedUserId: user.id } });
-                                        // console.log(data, client.cache.data.data.ROOT_QUERY);
-                                    }}
+                                    onClick={() => client.writeData({ data: { uiSelectedUserId: user.id } })}
                                     style={
                                         user.id === data.uiSelectedUserId
                                         ? { backgroundColor: '#FAFAD2' }
@@ -39,11 +36,11 @@ class Users extends React.Component {
                                     <th>{user.company_name}</th>
                                     <th><img src={user.image_url} alt="avatar" title="avatar" /></th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                )}
-            </Query>
+                            ))
+                        )}
+                    </Query>
+                </tbody>
+            </table>
         );
     }
 
