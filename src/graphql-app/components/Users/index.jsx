@@ -1,10 +1,10 @@
 import React from 'react';
-import { Query } from 'react-apollo';
+import { ApolloConsumer, Query } from 'react-apollo';
 
 import { GQL_INDEX_USERS } from '../../queries/index.js';
 
 class Users extends React.Component {
-    static renderTable(users = []) {
+    static renderTable(apolloClient, users = []) {
         return (
             <table>
                 <thead>
@@ -20,7 +20,10 @@ class Users extends React.Component {
                     {users.map(user => (
                         <tr
                             key={user.id}
-                            onClick={() => console.log('TODO')}
+                            onClick={() => {
+                                apolloClient.writeData({ data: { uiSelectedUserId: user.id } });
+                                console.log(apolloClient);
+                            }}
                         >
                             <th>{user.id}</th>
                             <th>{user.first_name} {user.last_name}</th>
@@ -45,7 +48,9 @@ class Users extends React.Component {
                     ) : (
                         <div style={{ padding: '24px' }}>
                             <h2 style={{ fontSize: '36px' }}>All Users</h2>
-                            {Users.renderTable(data.users)}
+                            <ApolloConsumer>
+                                {apolloClient => Users.renderTable(apolloClient, data.users)}
+                            </ApolloConsumer>
                         </div>
                     )
                 )}
