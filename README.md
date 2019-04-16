@@ -18,7 +18,7 @@ then `node index.js`. To view the client applications visit
 
 <sup>1</sup> [Webpack 4.30.0](https://github.com/webpack/webpack) on [jordanpatton/react-state-management-sandbox](https://github.com/jordanpatton/react-state-management-sandbox).
 
-<sup>2</sup> Calculated lines of code with find `./path/to/files -type f | xargs wc -l`.
+<sup>2</sup> Calculated lines of code with `find /path/to/files -type f | xargs wc -l`.
 
 <sup>3</sup> Includes [prop-types](https://github.com/facebook/prop-types)@15.7.2, [react](https://github.com/facebook/react)@16.8.6, [react-dom](https://github.com/facebook/react/tree/master/packages/react-dom)@16.8.6.
 
