@@ -20,13 +20,13 @@ then `node index.js`. To view the client applications visit
 
 <sup>2</sup> Calculated lines of code with find `./path/to/files -type f | xargs wc -l`.
 
-<sup>3</sup> Includes [prop-types@15.7.2](https://github.com/facebook/prop-types), [react@16.8.6](https://github.com/facebook/react), [react-dom@16.8.6](https://github.com/facebook/react/tree/master/packages/react-dom).
+<sup>3</sup> Includes [prop-types](https://github.com/facebook/prop-types)@15.7.2, [react](https://github.com/facebook/react)@16.8.6, [react-dom](https://github.com/facebook/react/tree/master/packages/react-dom)@16.8.6.
 
-<sup>4</sup> Includes Baseline and [react-redux@7.0.2](https://github.com/reduxjs/react-redux), [redux@4.0.1](https://github.com/reduxjs/redux), [redux-thunk@2.3.0](https://github.com/reduxjs/redux-thunk).
+<sup>4</sup> Includes Baseline and [react-redux](https://github.com/reduxjs/react-redux)@7.0.2, [redux](https://github.com/reduxjs/redux)@4.0.1, [redux-thunk](https://github.com/reduxjs/redux-thunk)@2.3.0.
 
-<sup>5</sup> Includes Baseline and [mobx@5.9.4](https://github.com/mobxjs/mobx), [mobx-react@5.4.3](https://github.com/mobxjs/mobx-react).
+<sup>5</sup> Includes Baseline and [mobx](https://github.com/mobxjs/mobx)@5.9.4, [mobx-react](https://github.com/mobxjs/mobx-react)@5.4.3.
 
-<sup>6</sup> Includes Baseline and [apollo-boost@0.3.1](https://github.com/apollographql/apollo-client/tree/master/packages/apollo-boost), [graphql@14.2.1](https://github.com/graphql/graphql-js), [react-apollo@2.5.4](https://github.com/apollographql/react-apollo).
+<sup>6</sup> Includes Baseline and [apollo-boost](https://github.com/apollographql/apollo-client/tree/master/packages/apollo-boost)@0.3.1, [graphql](https://github.com/graphql/graphql-js)@14.2.1, [react-apollo](https://github.com/apollographql/react-apollo)@2.5.4.
 
 ## Screencast
 ![screencast](documentation/react-state-management-sandbox-1.gif)
