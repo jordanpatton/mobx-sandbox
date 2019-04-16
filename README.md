@@ -15,6 +15,7 @@ then `node index.js`. To view the client applications visit
 | Redux <sup>4</sup>    | 151                                          | 3935                          | 16287                            | 471                                       |
 | MobX <sup>5</sup>     | 190                                          | 4235                          | 10501                            | 312                                       |
 | GraphQL <sup>6</sup>  | 304                                          | 5546                          | 11102                            | 326                                       |
+
 <sup>1</sup> [Webpack 4.30.0](https://github.com/webpack/webpack) on [jordanpatton/react-state-management-sandbox](https://github.com/jordanpatton/react-state-management-sandbox).
 <sup>2</sup> Calculated lines of code with find `./path/to/files -type f | xargs wc -l`.
 <sup>3</sup> Includes [prop-types@15.7.2](https://github.com/facebook/prop-types), [react@16.8.6](https://github.com/facebook/react), [react-dom@16.8.6](https://github.com/facebook/react/tree/master/packages/react-dom).
