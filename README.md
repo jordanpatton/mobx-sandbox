@@ -9,12 +9,12 @@ then `node index.js`. To view the client applications visit
 [http://localhost:3000/dist](http://localhost:3000/dist).
 
 ## By The Numbers
-|                       | Webpack Bundle Size (kilobytes) <sup>1</sup> | Time To Bundle (milliseconds) | Unbundled User Code Size (bytes) | Unbundled User Lines Of Code <sup>2</sup> |
-| --------------------- | -------------------------------------------- | ----------------------------- | -------------------------------- | ----------------------------------------- |
-| Baseline <sup>3</sup> | 119                                          | 3229                          | 3393                             | 99                                        |
-| Redux <sup>4</sup>    | 151                                          | 3935                          | 16287                            | 471                                       |
-| MobX <sup>5</sup>     | 190                                          | 4235                          | 10501                            | 312                                       |
-| GraphQL <sup>6</sup>  | 304                                          | 5546                          | 11102                            | 326                                       |
+|                      | Webpack Bundle Size (kilobytes)<sup>1</sup> | Time To Bundle (milliseconds) | Unbundled User Code Size (bytes) | Unbundled User Lines Of Code<sup>2</sup> |
+| -------------------- | ------------------------------------------- | ----------------------------- | -------------------------------- | ---------------------------------------- |
+| Baseline<sup>3</sup> | 119                                         | 3229                          | 3393                             | 99                                       |
+| Redux<sup>4</sup>    | 151                                         | 3935                          | 16287                            | 471                                      |
+| MobX<sup>5</sup>     | 190                                         | 4235                          | 10501                            | 312                                      |
+| GraphQL<sup>6</sup>  | 304                                         | 5546                          | 11102                            | 326                                      |
 
 <sup>1</sup> [Webpack 4.30.0](https://github.com/webpack/webpack) on [jordanpatton/react-state-management-sandbox](https://github.com/jordanpatton/react-state-management-sandbox).
 
