@@ -17,10 +17,15 @@ then `node index.js`. To view the client applications visit
 | GraphQL <sup>6</sup>  | 304                                          | 5546                          | 11102                            | 326                                       |
 
 <sup>1</sup> [Webpack 4.30.0](https://github.com/webpack/webpack) on [jordanpatton/react-state-management-sandbox](https://github.com/jordanpatton/react-state-management-sandbox).
+
 <sup>2</sup> Calculated lines of code with find `./path/to/files -type f | xargs wc -l`.
+
 <sup>3</sup> Includes [prop-types@15.7.2](https://github.com/facebook/prop-types), [react@16.8.6](https://github.com/facebook/react), [react-dom@16.8.6](https://github.com/facebook/react/tree/master/packages/react-dom).
+
 <sup>4</sup> Includes Baseline and [react-redux@7.0.2](https://github.com/reduxjs/react-redux), [redux@4.0.1](https://github.com/reduxjs/redux), [redux-thunk@2.3.0](https://github.com/reduxjs/redux-thunk).
+
 <sup>5</sup> Includes Baseline and [mobx@5.9.4](https://github.com/mobxjs/mobx), [mobx-react@5.4.3](https://github.com/mobxjs/mobx-react).
+
 <sup>6</sup> Includes Baseline and [apollo-boost@0.3.1](https://github.com/apollographql/apollo-client/tree/master/packages/apollo-boost), [graphql@14.2.1](https://github.com/graphql/graphql-js), [react-apollo@2.5.4](https://github.com/apollographql/react-apollo).
 
 ## Screencast
