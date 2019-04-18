@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 
 import GraphQLApp from './graphql-app/components/App/index.jsx';
 import MobXApp from './mobx-app/components/App/index.jsx';
-import ReduxApp from './redux-app/components/App/index.jsx';
+import ReduxApp from './redux-app/components/App';
 
 export interface RootProps {};
 export interface RootState { selection: string };

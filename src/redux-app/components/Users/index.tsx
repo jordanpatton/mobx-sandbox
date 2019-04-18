@@ -1,12 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import * as actions from '../../actions/index.js';
 import User from '../User/index.jsx';
 import WidgetsForUser from '../WidgetsForUser/index.jsx';
 
-export class Users extends React.Component {
+export interface UsersProps {
+    indexUsers: any,
+    uiSelectUserId: any,
+    uiSelectedUserId?: number | string,
+    users?: any[],
+};
+export interface UsersState {};
+
+export class Users extends React.Component<UsersProps, UsersState> {
     componentDidMount() {
         if (!this.props.users) {
             this.props.indexUsers();
@@ -64,21 +72,14 @@ export class Users extends React.Component {
     }
 }
 
-Users.propTypes = {
-    indexUsers: PropTypes.func.isRequired,
-    uiSelectUserId: PropTypes.func.isRequired,
-    uiSelectedUserId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    users: PropTypes.arrayOf(PropTypes.object),
-};
-
-const mapStateToProps = state => ({
+const mapStateToProps = (state: any) => ({
     uiSelectedUserId: state.reducers.ui.selectedUserId,
     users: state.reducers.users.data ? state.reducers.users.data.users : undefined,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch: any) => ({
     indexUsers: () => dispatch(actions.indexUsers()),
-    uiSelectUserId: userId => dispatch(actions.uiSelectUserId(userId)),
+    uiSelectUserId: (userId: number | string) => dispatch(actions.uiSelectUserId(userId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Users);
