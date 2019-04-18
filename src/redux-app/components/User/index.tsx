@@ -1,17 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import { connect } from 'react-redux';
 
 import * as actions from '../../actions/index.js';
 
-export class User extends React.Component {
+interface UserProps {
+    getUser: any,
+    uiSelectedUserId?: number | string,
+    user?: any,
+}
+interface UserState {}
+
+export class User extends React.Component<UserProps, UserState> {
     componentDidMount() {
         if (typeof this.props.uiSelectedUserId !== 'undefined') {
             this.props.getUser(this.props.uiSelectedUserId);
         }
     }
 
-    componentDidUpdate(prevProps) {
+    componentDidUpdate(prevProps: UserProps) {
         if (
             (prevProps.uiSelectedUserId !== this.props.uiSelectedUserId)
             && typeof this.props.uiSelectedUserId !== 'undefined'
@@ -35,19 +41,13 @@ export class User extends React.Component {
     }
 }
 
-User.propTypes = {
-    getUser: PropTypes.func.isRequired,
-    uiSelectedUserId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    user: PropTypes.object,
-};
-
-const mapStateToProps = state => ({
+const mapStateToProps = (state: any) => ({
     uiSelectedUserId: state.reducers.ui.selectedUserId,
     user: state.reducers.user.data ? state.reducers.user.data.user : undefined,
 });
 
-const mapDispatchToProps = dispatch => ({
-    getUser: userId => dispatch(actions.getUser(userId)),
+const mapDispatchToProps = (dispatch: any) => ({
+    getUser: (userId: number | string) => dispatch(actions.getUser(userId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(User);
