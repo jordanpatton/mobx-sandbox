@@ -1,13 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 
-import { App as GraphQLApp } from './graphql-app/components/App/index.jsx';
-import { App as MobXApp } from './mobx-app/components/App/index.jsx';
-import { App as ReduxApp } from './redux-app/components/App/index.jsx';
+import GraphQLApp from './graphql-app/components/App/index.jsx';
+import MobXApp from './mobx-app/components/App/index.jsx';
+import ReduxApp from './redux-app/components/App/index.jsx';
 
-export class Root extends React.Component {
-    constructor(...args) {
-        super(...args);
+export interface RootProps {};
+export interface RootState { selection: string };
+
+export class Root extends React.Component<RootProps, RootState> {
+    constructor(props: RootProps, state: RootState) {
+        super(props, state);
         this.state = { selection: 'default' };
     }
 
