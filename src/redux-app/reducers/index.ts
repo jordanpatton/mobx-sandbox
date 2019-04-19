@@ -12,7 +12,7 @@ import {
     INDEX_WIDGETS_PENDING,
     INDEX_WIDGETS_SUCCESS,
     INDEX_WIDGETS_FAILURE,
-} from '../actions/index.js';
+} from '../actions';
 
 
 interface UiState {

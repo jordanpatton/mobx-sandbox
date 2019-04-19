@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import * as actions from '../../actions/index.js';
+import * as actions from '../../actions';
 import User from '../User';
 import WidgetsForUser from '../WidgetsForUser';
 
