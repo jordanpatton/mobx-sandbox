@@ -3,7 +3,7 @@ import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
-import reducers from '../../reducers/index.js';
+import reducers from '../../reducers';
 import Users from '../Users';
 
 export function createStoreHelper({ initialState = {} } = {}) {

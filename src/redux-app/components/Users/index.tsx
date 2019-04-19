@@ -2,8 +2,8 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import * as actions from '../../actions/index.js';
-import User from '../User/index.jsx';
-import WidgetsForUser from '../WidgetsForUser/index.jsx';
+import User from '../User';
+import WidgetsForUser from '../WidgetsForUser';
 
 export interface UsersProps {
     indexUsers: any,
