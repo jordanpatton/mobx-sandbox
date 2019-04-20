@@ -8,7 +8,7 @@ Client. To start the server first `npm install`, then `npm run webpack:productio
 then `node index.js`. To view the client applications visit
 [http://localhost:3000/dist](http://localhost:3000/dist).
 
-## By The Numbers
+## By The Numbers (JavaScript)
 |                      | Webpack Bundle Size (kilobytes)<sup>1</sup> | Time To Bundle (milliseconds) | Unbundled User Code Size (bytes) | Unbundled User Lines Of Code<sup>2</sup> |
 | -------------------- | ------------------------------------------- | ----------------------------- | -------------------------------- | ---------------------------------------- |
 | Baseline<sup>3</sup> | 119                                         | 3229                          | 3393                             | 99                                       |
@@ -27,6 +27,9 @@ then `node index.js`. To view the client applications visit
 <sup>5</sup> Includes Baseline and [mobx](https://github.com/mobxjs/mobx)@5.9.4, [mobx-react](https://github.com/mobxjs/mobx-react)@5.4.3.
 
 <sup>6</sup> Includes Baseline and [apollo-boost](https://github.com/apollographql/apollo-client/tree/master/packages/apollo-boost)@0.3.1, [graphql](https://github.com/graphql/graphql-js)@14.2.1, [react-apollo](https://github.com/apollographql/react-apollo)@2.5.4.
+
+## By The Numbers (TypeScript)
+WIP
 
 ## Screencast
 ![screencast](documentation/react-state-management-sandbox-1.gif)
